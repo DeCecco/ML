@@ -1,4 +1,5 @@
 <div *ngFor="let val of results;" (click)="detail(val.id);">
   <img src="{{val.picture}}">
   <h2>{{val.title}}</h2>   
+  <h3>${{val.amount}}</h3>
 </div>

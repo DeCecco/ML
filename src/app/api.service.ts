@@ -37,16 +37,16 @@ export class ApiService {
     const arrayAux = [];
     for (let index = 0; index < json.length; index++) {
       const objectAux = {};
-      const priceAux = {};
+    //  const priceAux = {};
       objectAux.id = json[index].id;
       objectAux.title = json[index].title;
       objectAux.picture = json[index].thumbnail;
       objectAux.condition = json[index].condition;
-      objectAux.free_shipping = json[index].shipping['free_shipping'];
-      priceAux.amount = json[index].installments['amount'];
-      priceAux.currency =  json[index].installments['currency_id'];
-      priceAux.decimals = json[index].installments['amount'];
-      objectAux.price = priceAux;
+      objectAux.free_shipping = json[index].shipping['free_shipping'];      
+      objectAux.amount = json[index].price;
+      objectAux.currency =  json[index].currency_id;
+      objectAux.decimals = json[index].amount;
+      //objectAux.price = priceAux;
       arrayAux.push(objectAux);
     }
     return arrayAux;
