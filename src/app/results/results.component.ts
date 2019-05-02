@@ -13,8 +13,15 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
     this.api.change.subscribe(response => {
-      this.results = response;
+      this.results = response.items;
     });
+  }
+  detail(id){
+    this.api.detail(id).then(response => {
+      console.info(response);
+    }).catch(error => {
+      console.error(error);
+    })
   }
 
 }
