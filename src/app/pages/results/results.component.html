@@ -1,0 +1,13 @@
+
+<app-search></app-search>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div *ngFor="let val of results;" (click)="detail(val.id);">
+        <img src="{{val.picture}}">
+        <h2 class="" >{{val.title}}</h2>   
+        <h3>${{val.amount}}</h3>
+      </div>
+    </div>    
+  </div>
+</div>

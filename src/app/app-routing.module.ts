@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { SearchComponent } from './search/search.component';
-import { DetailComponent } from './detail/detail.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SearchComponent } from './pages/search/search.component';
+import { DetailComponent } from './pages/detail/detail.component';
+import { ResultsComponent } from './pages/results/results.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    redirectTo: '',
+    pathMatch: 'full',
+    component: SearchComponent
   },
-  { path: 'items/search', component: SearchComponent },
-  { path: 'items/:id', component: DetailComponent}
+  // { path: '', component: SearchComponent },
+  // { path: 'items', component: DetailComponent},
+  
+
+  { path: 'items/:id', component: DetailComponent },
+  { path: 'items?search=/:query', component: ResultsComponent}
 ];
 
 @NgModule({

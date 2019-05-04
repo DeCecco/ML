@@ -6,10 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { SearchComponent } from './search/search.component';
-import { DetailComponent } from './detail/detail.component';
-import { ResultsComponent } from './results/results.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SearchComponent } from './pages/search/search.component';
+import { DetailComponent } from './pages/detail/detail.component';
+import { ResultsComponent } from './pages/results/results.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // 

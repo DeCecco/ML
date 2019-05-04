@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter  } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -25,10 +25,10 @@ export class ApiService {
     let finalJson = {};
     finalJson = {
       author: {
-      name: 'Pablo',
-      lastname: 'De Cecco'
+        name: 'Pablo',
+        lastname: 'De Cecco'
       },
-      categories: json.filters[0] !== undefined ? json.filters[0].values : 'Sin categorias' ,
+      categories: json.filters[0] !== undefined ? json.filters[0].values : 'Sin categorias',
       items: this.resultsSearch(json.results)
     };
     return finalJson;
@@ -37,14 +37,14 @@ export class ApiService {
     const arrayAux = [];
     for (let index = 0; index < json.length; index++) {
       const objectAux = {};
-    //  const priceAux = {};
+      const priceAux = {};
       objectAux.id = json[index].id;
       objectAux.title = json[index].title;
       objectAux.picture = json[index].thumbnail;
       objectAux.condition = json[index].condition;
-      objectAux.free_shipping = json[index].shipping['free_shipping'];      
+      objectAux.free_shipping = json[index].shipping['free_shipping'];
       objectAux.amount = json[index].price;
-      objectAux.currency =  json[index].currency_id;
+      objectAux.currency = json[index].currency_id;
       objectAux.decimals = json[index].amount;
       //objectAux.price = priceAux;
       arrayAux.push(objectAux);
