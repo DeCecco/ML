@@ -11,16 +11,21 @@ export class ResultsComponent implements OnInit {
   results: any;
   text: any;
   constructor(private api: ApiService, private router: Router, private activateR: ActivatedRoute) {
-    this.text = this.activateR.snapshot.paramMap.get('query');
+    
+    this.activateR.params.subscribe(params => {
+      this.text = this.activateR.snapshot.paramMap.get('query');
+      this.search(this.text);
+    });
   }
 
   ngOnInit() {
-    this.search(this.text);
   }
+  
   search(text) {
-    this.api.search(text).then(response => {
+    // const json = [{'text': text}];
+    this.api.searchApi(text).then(response => {
       console.info(response);
-      this.results = response.items;
+      this.results = response.items; // response.items;
     }).catch(error => {
       console.error(error);
     })

@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DetailComponent implements OnInit {
   id: any;
   details: any;
+  description: any;
   constructor(private api: ApiService, private activateR: ActivatedRoute) {
     this.id = this.activateR.snapshot.paramMap.get('id');
    }
@@ -20,11 +21,12 @@ export class DetailComponent implements OnInit {
 
   seeDetail(id) {
     this.api.detail(id).then(response => {
-      this.details = response;
-      console.info(response)
+      this.details = response.items;
+      this.description = response.items[0].description;
+      console.info(response);
     }).catch(error => {
       console.error(error);
-    })
+    });
   }
 
 }
