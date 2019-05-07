@@ -15,7 +15,7 @@ app.use(morgan('dev')); // muestra las peticiones en la terminal
 app.use(express.json()); // permite interpretar el json de las peticiones
 
 // Routes
-app.use('/api/mercadolibre/',require('./routes/api-ml'));
+app.use('/api/',require('./routes/api-ml'));
 // Server Listen
 app.listen(app.get('port'), () => {
     console.log(`listening on http://localhost:`, app.get('port'));

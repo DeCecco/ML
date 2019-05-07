@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
   route = 'https://api.mercadolibre.com/sites/MLA/';
   routeId = 'https://api.mercadolibre.com/items/';
-  newRoute = 'http://localhost:3000/api/mercadolibre/';
+  newRoute = 'http://localhost:3000/api/';
   isOpen = false;
 
   @Output() change: EventEmitter<boolean> = new EventEmitter();
