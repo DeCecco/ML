@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
-})
+}) 
 export class DetailComponent implements OnInit {
   id: any;
   details: any;
@@ -21,8 +21,9 @@ export class DetailComponent implements OnInit {
 
   seeDetail(id) {
     this.api.detail(id).then(response => {
-      this.details = response.items;
-      this.description = response.items[0].description;
+      this.details = response;
+      this.description = this.details.items[0].description
+      this.details = this.details.items;
       console.info(response);
     }).catch(error => {
       console.error(error);

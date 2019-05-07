@@ -1,24 +1,46 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
+export interface jsonObjectAux {
+  id: string;
+  title: string;
+  picture: string;
+  condition: string;
+  free_shipping: string;
+  amount: string;
+  currency: string;
+  decimals: string;
+  price: {};
+  sold_quantity: string;
+  description: string;
+}
+export interface jsonPriceAux {
+  amount: string;
+  currency: string;
+  decimals: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
   route = 'https://api.mercadolibre.com/sites/MLA/';
   routeId = 'https://api.mercadolibre.com/items/';
   newRoute = 'http://localhost:3000/api/';
   isOpen = false;
-
+  jsonObjectAux: jsonObjectAux;
+  jsonPriceAux : jsonPriceAux;
   @Output() change: EventEmitter<boolean> = new EventEmitter();
 
 
   constructor(private http: HttpClient) { }
 
   searchApi(text) {
-    return this.http.get(this.newRoute + '?where=1&data=' + text).toPromise().then(data => this.orderData(data, 1));
+    return this.http.get(this.newRoute + 'items?q' + text).toPromise().then(data => data));
   }
-  
+
   detail(id) {
     return this.http.get(this.newRoute + '?where=2&data=' + id).toPromise().then(data => this.orderData(data, 0));
   }
@@ -42,7 +64,6 @@ export class ApiService {
     return finalJson;
   }
   resultsSearch(jsonAux) {
-    console.info(json);
     const arrayAux = [];
     let json = [];
     let lenght = 1;
@@ -56,6 +77,7 @@ export class ApiService {
     for (let index = 0; index < lenght; index++) {
       const objectAux = {};
       const priceAux = {};
+
       objectAux.id = json[index].id;
       objectAux.title = json[index].title;
       objectAux.picture = json[index].thumbnail;

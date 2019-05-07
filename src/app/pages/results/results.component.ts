@@ -25,7 +25,8 @@ export class ResultsComponent implements OnInit {
     // const json = [{'text': text}];
     this.api.searchApi(text).then(response => {
       console.info(response);
-      this.results = response.items; // response.items;
+      this.results = response;// response.items;
+      this.results = this.results.items
     }).catch(error => {
       console.error(error);
     })
