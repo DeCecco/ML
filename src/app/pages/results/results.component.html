@@ -4,11 +4,9 @@
     <div class="row" class="categories"  *ngFor="let val of categories;let i = index" >
       {{val.name}} <span *ngIf="i!=L">></span>
       </div>
-  <div class="row">
-      <div class="">
-        </div>
+  <div class="row mg-top">      
     <div class="col-sm-12 bg-white">
-      <div *ngFor="let val of results;" (click)="detail(val.id);" class="row" >
+      <div *ngFor="let val of results;" (click)="detail(val.id);" class="row padding" >
           <div class="col-sm-3">
             <img width="180px" height="180px" src="{{val.picture}}">
           </div>

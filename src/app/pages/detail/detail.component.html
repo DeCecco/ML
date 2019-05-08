@@ -3,11 +3,9 @@
     <div class="row categories" *ngFor="let val of categories;let i = index">
         cat= {{val.name}}        <span *ngIf="i!=L">></span>
     </div>
-    <div class="row">
-        <div >
-        </div>
+    <div class="row mg-top">        
         <div class="col-sm-12 bg-white">
-            <div *ngFor="let val of details;" class="row">
+            <div *ngFor="let val of details;" class="row padding">
                 <div class="col-sm-8">
                     <img width="680px" src="{{val.picture}}">
                 </div>
