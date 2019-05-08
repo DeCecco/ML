@@ -1,27 +1,29 @@
 <app-search></app-search>
 <div class="container" style="background-color:#eeeeee">
-        <div class="row" style="font-size:14px;color:#999999">
-          categorias
-          </div>
-      <div class="row">
-          <div class="" style="background-color:#eeeeee">
-            </div>
-        <div class="col-sm-12" style="background-color:white">
-          <div *ngFor="let val of details;" class="row">
-              <div class="col-sm-8">
-                <img width="680px" style="border-radius:4px" src="{{val.picture}}">
-              </div>
-              <div class="col-sm-4">
-                <div class=""  style="font-size:16px;color:#333333">{{val.sold_quantity}} Vendidos</div>   
-                <h2 class=""  style="font-size:24px;color:#333333">{{val.title}}</h2>   
-                <h3 style="font-size:46px;color:#333333">${{val.amount}}</h3>
-                <button type="button">Comprar</button>
-              </div>                        
-          </div>
-          <div class="row">
-            <div style="font-size:28px">Descripcion del producto</div>
-            <div style="font-size:16px">{{description}}</div>
-          </div>
-        </div>            
-      </div>
+    <div class="row" style="font-size:14px;color:#999999;display: inline-block;margin-left:2%" *ngFor="let val of categories;let i = index">
+        cat= {{val.name}}        <span *ngIf="i!=L">></span>
     </div>
+    <div class="row">
+        <div class="" style="background-color:#eeeeee">
+        </div>
+        <div class="col-sm-12" style="background-color:white">
+            <div *ngFor="let val of details;" class="row">
+                <div class="col-sm-8">
+                    <img width="680px" style="border-radius:4px" src="{{val.picture}}">
+                </div>
+                <div class="col-sm-3">
+                    <div class="" style="font-size:16px;color:#333333">{{val.sold_quantity}} Vendidos</div>
+                    <h2 class="" style="font-size:24px;color:#333333">{{val.title}}</h2>
+                    <h3 style="font-size:46px;color:#333333">${{val.amount}}</h3>                    
+                    <div class="col-sm-12">
+                        <button type="button" style="width: 100%;" class="btn btn-primary">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div style="font-size:28px">Descripcion del producto</div>
+                <div style="font-size:16px">{{description}}</div>
+            </div>
+        </div>
+    </div>
+</div>

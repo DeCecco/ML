@@ -1,14 +1,14 @@
 
 <app-search></app-search>
 <div class="container" style="background-color:#eeeeee">
-    <div class="row" style="font-size:14px;color:#999999">
-      categorias
+    <div class="row" style="font-size:14px;color:#999999;display: inline-block;margin-left:2%"  *ngFor="let val of categories;let i = index" >
+      {{val.name}} <span *ngIf="i!=L">></span>
       </div>
   <div class="row">
       <div class="" style="background-color:#eeeeee">
         </div>
     <div class="col-sm-12" style="background-color:white">
-      <div *ngFor="let val of results;" (click)="detail(val.id);" class="row">
+      <div *ngFor="let val of results;" (click)="detail(val.id);" class="row" >
           <div class="col-sm-3">
             <img width="180px" height="180px" style="border-radius:4px" src="{{val.picture}}">
           </div>
@@ -17,10 +17,13 @@
             <h2 class=""  style="font-size:18px;color:#333333">{{val.title}}</h2>   
           </div>          
           <div class="col-sm-3" style="text-align: center;margin-top: 4%;font-size:12px;color:#666666">
-            LOCALIDAD
+            {{val.state}}
           </div>
+          <div style="border-bottom:1px black solid;width: 90%; left 20%"></div>
       </div>
+      
     </div>    
     <div class="" style="background-color:#eeeeee"></div>
   </div>
+  
 </div>

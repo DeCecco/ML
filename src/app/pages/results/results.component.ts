@@ -10,8 +10,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ResultsComponent implements OnInit {
   results: any;
   text: any;
+  categories: any;
+  L: any;
   constructor(private api: ApiService, private router: Router, private activateR: ActivatedRoute) {
-    
+
     this.activateR.params.subscribe(params => {
       this.text = this.activateR.snapshot.paramMap.get('query');
       this.search(this.text);
@@ -20,19 +22,26 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   search(text) {
-    // const json = [{'text': text}];
     this.api.searchApi(text).then(response => {
-      console.info(response);
-      this.results = response;// response.items;
-      this.results = this.results.items
+      this.results = response;
+      if (typeof this.results.categories !== 'string') {
+        this.categories = this.results.categories;
+        this.L = this.categories.length - 1;
+      } else {
+        this.categories = [{name : this.results.categories}];
+        this.L = 0;
+      }
+      this.results = this.results.items;
     }).catch(error => {
       console.error(error);
-    })
+    });
   }
   detail(id) {
     if (id) {
+
+      this.api.changeCategory(this.categories);
       this.router.navigate(['/items', id]);
     }
   }

@@ -11,12 +11,19 @@ export class DetailComponent implements OnInit {
   id: any;
   details: any;
   description: any;
+  categories: any;
+  L: any;
   constructor(private api: ApiService, private activateR: ActivatedRoute) {
     this.id = this.activateR.snapshot.paramMap.get('id');
    }
 
   ngOnInit() {
     this.seeDetail(this.id);
+    this.api.change.subscribe(cat => {
+      this.categories = cat;
+      this.L = cat.length;
+      console.info(cat)
+    });
   }
 
   seeDetail(id) {
