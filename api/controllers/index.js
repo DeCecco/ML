@@ -5,7 +5,7 @@ const https = require('https');
 module.exports = {
     url : 'https://api.mercadolibre.com/',
 
-    orderData: function (json, from) {
+    orderData: function (json, from,description) {
         json = JSON.parse(json);
         let finalJson = {};
         let items, categories = '';
@@ -30,13 +30,13 @@ module.exports = {
                 lastname: 'De Cecco'
             },
             categories: categories,
-            items: this.resultsSearch(items,from)
+            items: this.resultsSearch(items,from,description)
         };
 
         return finalJson;
     },
 
-    resultsSearch: function (jsonAux, from) {        
+    resultsSearch: function (jsonAux, from,description) {        
         const arrayAux = [];
         let json = [];
         let lenght = 1;
@@ -52,7 +52,7 @@ module.exports = {
             const priceAux = {};
             objectAux.id = json[index].id;
             objectAux.title = json[index].title;
-            objectAux.picture = json[index].thumbnail;
+            objectAux.picture = from===2 ? json[index].pictures[0].url : json[index].thumbnail;
             objectAux.condition = json[index].condition;            
             objectAux.free_shipping = json[index].shipping == undefined ? false : json[index].shipping['free_shipping'];
             objectAux.amount = json[index].price;
@@ -63,8 +63,7 @@ module.exports = {
             priceAux.decimals = '00';
             objectAux.price = priceAux;
             objectAux.sold_quantity = json[index].sold_quantity;
-            objectAux.description = from === 2 ?  this.apiCalls('items/' +json[index].id + '/description') : '' ;        
-            console.info('call' + this.apiCalls('items/' +json[index].id + '/description'))    
+            objectAux.description = description;   
             objectAux.state = json[index].address == undefined ? 'Provincia' : json[index].address.state_name;            
             arrayAux.push(objectAux);            
         }
@@ -94,8 +93,6 @@ module.exports = {
             console.log("Error: " + err.message);
         });
     }
-};
-
-
+}; 
 var zemba = function () {
 }

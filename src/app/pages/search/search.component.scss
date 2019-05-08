@@ -2,11 +2,21 @@
     background-color: #ffe600;
     border: 0;
     .nav-logo{
-        background-image:URL('assets/Logo_ML@2x.png.png');    
-        height: 72px;  
-        width: 117px;
+        background-image:URL('assets/Logo_ML.png');    
+        height: 38px;  
+        width: 53px;
         background-repeat: no-repeat;
         margin-right: 1%;
         display: block;
+        background-position: center; 
+    }
+    button{
+        background-color: #eeeeee; 
+        border-color:#eeeeee;
+        background-image: URL('assets/ic_Search.png');
+        background-repeat: no-repeat;        
+        background-position: center; 
+        height: 41px;
+        width: 41px;
     }
 }
