@@ -8,7 +8,7 @@
     <div class="col-sm-12 bg-white">
       <div *ngFor="let val of results;" (click)="detail(val.id);" class="row padding" >
           <div class="col-sm-3">
-            <img width="180px" height="180px" src="{{val.picture}}">
+            <img width="180px" alt="{{val.title}}" height="180px" src="{{val.picture}}">
           </div>
           <div class="col-sm-6">
             <h3>${{val.amount}}<img *ngIf="val.free_shipping" src="assets/ic_shipping.png"></h3>
